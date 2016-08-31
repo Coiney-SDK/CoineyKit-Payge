@@ -42,6 +42,6 @@ https://api.coiney.io/api/v1/payments/:PAYMENT_ID
 ```
 curl -X GET https://api.coiney.io/api/v1/payments/pm_hogehogehogehogehogehogehogehoge \
   -H "Authorization: Bearer sk_live_hogehogehogehogehogehogehogehoge" \
-  -H "X−CoineyPayge−Version: 2016-08-31" \
+  -H "X-CoineyPayge-Version: 2016-08-31" \
   -H "Accept: application/json"
 ```
