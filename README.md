@@ -10,7 +10,7 @@
 - [エラー](api-spec/errors.md)
 - [ページング](api-spec/pagination.md)
 - [バージョニング](api-spec/versioning.md)
-- [変更履歴](api-spec/CAHNGELOG.md)
+- [変更履歴](api-spec/CHANGELOG.md)
 - [swaggerドキュメント](api-spec/api.yaml)
 
 ### Payments API
