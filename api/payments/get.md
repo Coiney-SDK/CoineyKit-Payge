@@ -1,0 +1,47 @@
+# 支払い情報の取得
+
+<table>
+  <tr>
+    <td>メソッド</td>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <td>認証</td>
+    <td>:white_check_mark:</td>
+  </tr>
+</table>
+
+## URL
+
+```
+https://api.coiney.io/api/v1/payments/:PAYMENT_ID
+```
+
+## レスポンス
+
+|パラメータ名|説明|型|例|備考|
+|:----:|:----:|:----:|:----:|:----:|
+|`id`|支払いID|`string`|`pm_hogehogehogehogehogehogehogehoge`||
+|`object`|オブジェクト|`string`|`payment`||
+|`mode`|モード|`string`|`live`|本番環境: `live`、テスト環境: `test`|
+|`createdAt`|支払い作成日|`dateTime`|`2016-08-14T21:57:20+09:00`|`ISO 8601`フォーマット。|
+|`amount`|支払い金額|`number`|`100`||
+|`currency`|通貨|`string`|`jpy`||
+|`paidAt`|支払い日|`dateTime`|`2016-08-14T21:57:20+09:00`|`ISO 8601`フォーマット。|
+|`refundedAt`|売上取消・返品した日|`dateTime`|`2016-08-14T21:57:20+09:00`|`ISO 8601`フォーマット。|
+|`validUntil`|支払い期限|`dateTime`|`2016-08-14T21:57:20+09:00`|`ISO 8601`フォーマット。|
+|`status`|支払いステータス|`string`|`open`|支払いステータスに関して、詳しくは[こちら](/user-guides/status.md)|
+|`subject`|支払いのタイトル|`string`|`スタンダードプラン`||
+|`links.paymentUrl`|支払いページURL|`string`|`https://payge.co/co_hogehogehogehogehogehogehogehoge`||
+|`links.redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect	`||
+|`links.cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel	`||
+|`links.webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook	`||
+
+### リクエスト例
+
+```
+curl -X GET https://api.coiney.io/api/v1/payments/pm_hogehogehogehogehogehogehogehoge \
+  -H "Authorization: sk_live_hogehogehogehogehogehogehogehoge" \
+  -H "X−CoineyPayge−Version: 2016-08-31" \
+  -H "Accept: application/json"
+```

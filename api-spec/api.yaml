@@ -1,0 +1,369 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Coiney Payge API
+  description: Payment with Coiney Payge
+  x-CoineyPayge-Version: 2016-08-31
+basePath: /v1
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /payments:
+    post:
+      description: |
+        支払取引を開始します。
+      parameters:
+        - $ref: '#/parameters/x_coiney_version'
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/CreatePaymentRequest'
+      responses:
+        '201':
+          description: |
+            支払い完了
+          schema:
+            $ref: '#/definitions/Payment'
+        '400':
+          $ref: '#/responses/InvalidParameter'
+        '401':
+          $ref: '#/responses/AuthenticationError'
+      tags:
+        - payment
+    get:
+      description: |
+        支払取引の一覧を返します。
+      parameters:
+        - $ref: '#/parameters/x_coiney_version'
+        - name: limit
+          in: query
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+          description: |
+            返す支払取引の数を指定。
+        - name: startingAfter
+          in: query
+          type: string
+          description: |
+            支払取引の一覧を取得する際に、先頭の支払取引の ID を指定します。
+            返ってくる一覧は、この ID の次の支払取引からとなります。
+            この動きは、次のページを取得したい場合に、前回取得した一覧の最後の ID を
+            指定すればよいことになります。
+        - name: endingBefore
+          in: query
+          type: string
+          description: |
+            支払取引の一覧を取得する際に、最後の支払取引の ID を指定します。
+            返ってくる一覧は、この ID の前の支払取引からとなります。
+            この動きは、前のページを取得したい場合に、前回取得した一覧の最後の ID を
+            指定すればよいことになります。
+      responses:
+        '200':
+          description: |
+            条件にマッチする支払取引を返します。
+          schema:
+            type: object
+            properties:
+              object:
+                type: string
+                enum:
+                  - list
+              hasMore:
+                type: boolean
+              totalCount:
+                type: integer
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Payment'
+        '400':
+          $ref: '#/responses/InvalidParameter'
+        '401':
+          $ref: '#/responses/AuthenticationError'
+      tags:
+        - payment
+  '/payments/{PAYMENT_ID}':
+    get:
+      description: |
+        支払取引の情報を返します。
+      parameters:
+        - $ref: '#/parameters/x_coiney_version'
+        - $ref: '#/parameters/payment_id'
+      responses:
+        '200':
+          description: |
+            該当する支払取引を返します。
+          schema:
+            $ref: '#/definitions/Payment'
+        '400':
+          $ref: '#/responses/InvalidParameter'
+        '401':
+          $ref: '#/responses/AuthenticationError'
+        '404':
+          $ref: '#/responses/NotFound'
+      tags:
+        - payment
+    patch:
+      description: |
+        支払取引の情報を更新します。
+      parameters:
+        - $ref: '#/parameters/x_coiney_version'
+        - $ref: '#/parameters/payment_id'
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UpdatePaymentRequest'
+      responses:
+        '200':
+          description: |
+            支払取引の更新完了。
+          schema:
+            $ref: '#/definitions/Payment'
+        '400':
+          $ref: '#/responses/InvalidParameter'
+        '401':
+          $ref: '#/responses/AuthenticationError'
+        '404':
+          $ref: '#/responses/NotFound'
+      tags:
+        - payment
+definitions:
+  Payment:
+    type: object
+    properties:
+      id:
+        type: string
+      object:
+        type: string
+        enum:
+          - payment
+      mode:
+        type: string
+        enum:
+          - live
+          - test
+        description: |
+          本番環境では live、テスト環境では test
+      createdAt:
+        type: string
+        format: dateTime
+        description: |
+          取引の作成日時。ISO 8601 フォーマット
+      amount:
+        type: number
+        format: float
+      currency:
+        type: string
+        enum:
+          - jpy
+        description: |
+          支払に使う通貨を指定します。
+          ISO 4217 に基づいた 3桁の通貨コードを使います。
+          現状は "JPY" のみ有効です。
+      paidAt:
+        type: string
+        format: dateTime
+        description: |
+          支払処理が完了した日時。ISO 8601 フォーマット
+          status が paid or refunded の場合のみ
+      refundedAt:
+        type: string
+        format: dateTime
+        description: |
+          返金処理が完了した日時。ISO 8601 フォーマット
+          status が refunded の場合のみ
+      validUntil:
+        type: string
+        format: dateTime
+        description: |
+          この支払が有効である日時。ISO 8601 フォーマット
+      status:
+        type: string
+        enum:
+          - open
+          - expired
+          - paid
+          - refunded
+          - cancelled
+      subject:
+        type: string
+        description: |
+          Coiney Payge のタイトル
+      links:
+        type: object
+        properties:
+          paymentUrl:
+            type: string
+            description: |
+              実際に支払処理する画面へ遷移する URL
+              POST `/payment` で作られる
+          redirectUrl:
+            type: string
+            description: |
+              支払処理が完了した際に遷移する画面の URL
+          cancelUrl:
+            type: string
+            description: |
+              支払処理をキャンセルした際に遷移する画面の URL
+          webhookUrl:
+            type: string
+            description: |
+              支払処理中に呼び出す Webhook の URL
+  CreatePaymentRequest:
+    type: object
+    required:
+      - amount
+      - currency
+      - method
+    properties:
+      amount:
+        type: number
+        format: float
+        minimum: 1
+        description: |
+          支払金額
+      currency:
+        type: string
+        enum:
+          - jpy
+        description: |
+          支払に使う通貨を指定します。
+          ISO 4217 に基づいた 3桁の通貨コードを使います。
+          現状は "JPY" のみ有効です。
+      locale:
+        type: string
+        enum:
+          - ja_JP
+          - en_US
+          - zh_CN
+          - zh_TW
+          - ko_KR
+        description: |
+          Coiney Payge の表示言語を指定します。
+      redirectUrl:
+        type: string
+        maxLength: 255
+        description: |
+          支払処理が完了した後に遷移する画面の URL を指定します。
+          指定しない場合は Coiney Payge の画面が使われます。
+      cancelUrl:
+        type: string
+        maxLength: 255
+        description: |
+          支払処理をキャンセルした際に遷移する画面の URL を指定します。
+          指定しない場合は、ユーザーからのキャンセルができなくなります。
+      webhookUrl:
+        type: string
+        maxLength: 255
+        description: |
+          この支払でのみ使用する webhook URL を指定します。
+          指定しない場合は、アカウントの設定値が使われます。
+          アカウントの設定値もない場合は、webhook の通知をしません。
+      receiptEmail:
+        type: string
+        description: |
+          支払い完了後、レシートメールを送付する場合に設定します。
+      method:
+        type: string
+        enum:
+          - creditcard
+        description: |
+          支払に使用する支払方法を指定します。
+          通常は、このパラメータを設定せずに使用します。
+          パラメータを設定しない場合は、使用できる支払方法から選択する画面が表示されます。
+          このパラメータを設定した場合は、支払方法の選択画面を表示せず、直接入力画面へと遷移します。
+      subject:
+        type: string
+        description: |
+          Coiney Payge のタイトル
+      expiredOn:
+        type: string
+        format: date
+        description: |
+          支払期限を日付で指定します。
+          指定しない場合は、デフォルトで 3ヶ月が設定されます。
+  UpdatePaymentRequest:
+    type: object
+    properties:
+      expiredOn:
+        type: string
+        format: date
+        description: |
+          支払期限を日付で指定します。
+          指定しない場合は、デフォルトで 3ヶ月が設定されます。
+  Errors:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+        description: エラーの種類
+        enum:
+          - api_error
+          - authentication_error
+          - card_error
+          - invalid_request_error
+      code:
+        type: string
+        description: エラーコード
+      message:
+        type: string
+        description: エラーの内容
+      params:
+        type: object
+        description: |
+          パラメータに関するエラーの場合に使用する。
+          Key としてパラメータ名、Value としてエラーメッセージを含める。
+parameters:
+  payment_id:
+    name: PAYMENT_ID
+    in: path
+    type: string
+    required: true
+    description: 支払取引のID
+  x_coiney_version:
+    name: X-CoineyPayge-Version
+    in: header
+    type: string
+    description: API のマイナーバージョンを指定します。
+responses:
+  InvalidParameter:
+    description: |
+      リクエストパラメータ不正
+    headers:
+      WWW-Authenticate:
+        type: string
+        description: |
+          Bearer error="invalid_request"
+    schema:
+      $ref: '#/definitions/Errors'
+  AuthenticationError:
+    description: |
+      API キーが設定されていない。
+      もしくは、不正な API キー
+    headers:
+      WWW-Authenticate:
+        type: string
+        description: |
+          Bearer realm="no_api_key" or
+          Bearer error="invaid_api_key"
+    schema:
+      $ref: '#/definitions/Errors'
+  NotFound:
+    description: |
+      支払取引が見つからない
+    schema:
+      $ref: '#/definitions/Errors'
+securityDefinitions:
+  bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: RFC 7235 の Authorization ヘッダを用い、RFC 6750 の Bearer スキームを使用する
+security:
+  - bearer: []
