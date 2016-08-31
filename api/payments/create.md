@@ -56,18 +56,20 @@ https://api.coiney.io/api/v1/payments
 
 ```
 curl -X POST https://api.coiney.io/api/v1/payments \
-  -H "Authorization: sk_live_hogehogehogehogehogehogehogehoge" \
+  -H "Authorization: Bearer sk_live_hogehogehogehogehogehogehogehoge" \
   -H "X−CoineyPayge−Version: 2016-08-31" \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
-  -d "amount=100" \
-  -d "currency=jpy" \
-  -d "locale=ja_JP" \
-  -d "redirectUrl=https://coiney.com/redirect" \
-  -d "cancelUrl=https://coiney.com/cancel" \
-  -d "webhookUrl=https://coiney.com/webhook" \
-  -d "receiptEmail=test@coiney.com" \
-  -d "method=creditcard" \
-  -d "subject=スタンダードプラン" \
-  -d "expiredOn=2016-08-01"
+  -d $'{
+  "amount": 128.00,
+  "currency": "jpy",
+  "locale": "ja_JP",
+  "redirectUrl": "https://coiney.com/redirect",
+  "cancelUrl": "https://coiney.com/cancel",
+  "webhookUrl": "https://coiney.com/webhook",
+  "receiptEmail": "test@coiney.com",
+  "method": "creditcard",
+  "subject": "スタンダードプラン",
+  "expiredOn": "2016-09-01"
+  }'
 ```

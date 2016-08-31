@@ -14,5 +14,5 @@ APIリクエスト時に`RFC 7235`の`Authorization`ヘッダを用い、`RFC 67
 
 ```
 curl "https://api.coiney.io/api/v1/payments" \
-  -H "Authorization: sk_live_hogehogehogehogehogehogehogehoge"
+  -H "Authorization: Bearer sk_live_hogehogehogehogehogehogehogehoge"
 ```
