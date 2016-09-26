@@ -192,7 +192,7 @@ definitions:
       subject:
         type: string
         description: |
-          Coiney Payge のタイトル
+          Coiney Payge の件名
       remarks:
         type: string
         description: |
@@ -288,7 +288,7 @@ definitions:
       subject:
         type: string
         description: |
-          Coiney Payge のタイトル
+          Coiney Payge の件名
       remarks:
         type: string
         description: |
