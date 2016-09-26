@@ -1,9 +1,9 @@
 swagger: '2.0'
 info:
-  version: 1.0.0
+  version: "1.0.1"
   title: Coiney Payge API
   description: Payment with Coiney Payge
-  x-CoineyPayge-Version: 2016-08-31
+  x-CoineyPayge-Version: 2016-09-27
 basePath: /v1
 consumes:
   - application/json
@@ -193,6 +193,19 @@ definitions:
         type: string
         description: |
           Coiney Payge のタイトル
+      remarks:
+        type: string
+        description: |
+          Coiney Payge の備考
+      description:
+        type: string
+        description: |
+          Coiney Payge に関する内部的なメモ
+      metadata:
+        type: object
+        description: |
+          Coiney Payge に関する任意のデータ
+          任意の Key/Value が定義できるが、Value は文字列のみ許可
       links:
         type: object
         properties:
@@ -263,10 +276,6 @@ definitions:
           この支払でのみ使用する webhook URL を指定します。
           指定しない場合は、アカウントの設定値が使われます。
           アカウントの設定値もない場合は、webhook の通知をしません。
-      receiptEmail:
-        type: string
-        description: |
-          支払い完了後、レシートメールを送付する場合に設定します。
       method:
         type: string
         enum:
@@ -280,6 +289,19 @@ definitions:
         type: string
         description: |
           Coiney Payge のタイトル
+      remarks:
+        type: string
+        description: |
+          Coiney Payge の備考
+      description:
+        type: string
+        description: |
+          Coiney Payge に関する内部的なメモ
+      metadata:
+        type: object
+        description: |
+          Coiney Payge に関する任意のデータ
+          任意の Key/Value が定義できるが、Value は文字列のみ許可
       expiredOn:
         type: string
         format: date
@@ -295,6 +317,15 @@ definitions:
         description: |
           支払期限を日付で指定します。
           指定しない場合は、デフォルトで 3ヶ月が設定されます。
+      description:
+        type: string
+        description: |
+          Coiney Payge に関する内部的なメモ
+      metadata:
+        type: object
+        description: |
+          Coiney Payge に関する任意のデータ
+          任意の Key/Value が定義できるが、Value は文字列のみ許可
   Errors:
     type: object
     required:
