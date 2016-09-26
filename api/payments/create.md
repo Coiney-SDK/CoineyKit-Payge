@@ -27,7 +27,6 @@ https://api.coiney.io/api/v1/payments
 |`redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect`||支払い処理が完了した後に遷移する画面のURLを指定します。指定がない場合は、Coineyペイジ標準の完了画面に遷移します。|
 |`cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel`||支払い処理をキャンセルした際に遷移する画面のURLを指定します。指定がない場合は、支払い画面からキャンセルができません。|
 |`webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook`||Webhook URLを指定します。指定しない場合は、ウェブ管理画面で設定されたURLが使用されます。Webhookに関して、詳しくは[こちら](/user-guides/webhook.md)。|
-|`receiptEmail`|レシート用メールアドレス|`string`|`test@coiney.com`||支払い完了後、レシートメールを送信する場合に設定します。|
 |`method`|支払い方法|`string`|`creditcard`|:white_check_mark:|支払い方法を指定します。現在は`creditcard`のみ有効です。|
 |`subject`|支払いのタイトル|`string`|`スタンダードプラン`||支払い画面に表示されます。|
 |`description`|支払いに関する内部的なメモ|`string`|`ウェブサイトからの支払い`||支払い画面には表示されないので内部的な用途でお使いください。|
@@ -73,7 +72,6 @@ curl -X POST https://api.coiney.io/api/v1/payments \
   "redirectUrl": "https://coiney.com/redirect",
   "cancelUrl": "https://coiney.com/cancel",
   "webhookUrl": "https://coiney.com/webhook",
-  "receiptEmail": "test@coiney.com",
   "method": "creditcard",
   "subject": "スタンダードプラン",
   "description": "ウェブサイトからの支払い",
