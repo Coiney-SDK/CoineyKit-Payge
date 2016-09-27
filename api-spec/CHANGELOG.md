@@ -2,7 +2,10 @@
 
 ## 2016-09-27
 
-`POST /payments`の`receiptEmail`フィールドを指定することができなくなりました。
+### 機能変更
+
+- Payment API
+  - `POST /payments`の`receiptEmail`フィールドを指定することができなくなりました。
 
 ### 機能追加
 
