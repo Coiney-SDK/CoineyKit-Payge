@@ -9,6 +9,7 @@
 - [セキュリティ](api-spec/security.md)
 - [エラー](api-spec/errors.md)
 - [ページング](api-spec/pagination.md)
+- [メタデータ](api-spec/metadata.md)
 - [バージョニング](api-spec/versioning.md)
 - [変更履歴](api-spec/CHANGELOG.md)
 - [swaggerドキュメント](api-spec/api.yaml)
