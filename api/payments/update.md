@@ -55,7 +55,7 @@ https://api.coiney.io/api/v1/payments/:PAYMENT_ID
 ```
 curl -X PATCH https://api.coiney.io/api/v1/payments/pm_hogehogehogehogehogehogehogehoge \
   -H "Authorization: Bearer sk_live_hogehogehogehogehogehogehogehoge" \
-  -H "X-CoineyPayge-Version: 2016-09-27" \
+  -H "X-CoineyPayge-Version: 2016-10-25" \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
   -d $'{
