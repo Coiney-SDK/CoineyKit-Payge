@@ -39,6 +39,7 @@ https://api.coiney.io/api/v1/payments/:PAYMENT_ID
 |`links.redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect`||
 |`links.cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel`||
 |`links.webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook`||
+|`locale`|表示言語|`string`|`ja_JP`|Coineyペイジの表示言語。言語設定に関して詳しくは[こちら](/user-guides/locale.md)。|
 
 ### リクエスト例
 

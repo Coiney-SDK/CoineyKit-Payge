@@ -23,7 +23,7 @@ https://api.coiney.io/api/v1/payments
 |:----:|:----:|:----:|:----:|:----:|:----:|
 |`amount`|支払い金額|`number`|`100`|:white_check_mark:|100円以上|
 |`currency`|通貨|`string`|`jpy`|:white_check_mark:|支払いに使う通貨を指定します。`ISO 4217`に基づいた 3桁の通貨コードを使います。現在は`JPY`のみ有効です。|
-|`locale`|表示言語|`string`|`ja_JP`||表示言語を指定します。現在は`ja_JP`のみ有効です。|
+|`locale`|表示言語|`string`|`ja_JP`||Coineyペイジの表示言語を指定します。言語設定に関して詳しくは[こちら](/user-guides/locale.md)。|
 |`redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect`||支払い処理が完了した後に遷移する画面のURLを指定します。指定がない場合は、Coineyペイジ標準の完了画面に遷移します。|
 |`cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel`||支払い処理をキャンセルした際に遷移する画面のURLを指定します。指定がない場合は、支払い画面からキャンセルができません。|
 |`webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook`||Webhook URLを指定します。指定しない場合は、ウェブ管理画面で設定されたURLが使用されます。Webhookに関して、詳しくは[こちら](/user-guides/webhook.md)。|
@@ -56,6 +56,7 @@ https://api.coiney.io/api/v1/payments
 |`links.redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect`||
 |`links.cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel`||
 |`links.webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook`||
+|`locale`|表示言語|`string`|`ja_JP`|Coineyペイジの表示言語。言語設定に関して詳しくは[こちら](/user-guides/locale.md)。|
 
 ### リクエスト例
 
