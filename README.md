@@ -23,6 +23,7 @@
 
 ## ユーザーガイド
 
+- [言語設定について](user-guides/locale.md)
 - [Webhookについて](user-guides/webhook.md)
 - [支払いステータスについて](user-guides/status.md)
 - [テスト決済](user-guides/sandbox.md)
