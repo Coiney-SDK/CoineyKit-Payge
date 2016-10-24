@@ -1,5 +1,15 @@
 # Version 1
 
+## 2016-10-25
+
+Coineyペイジ多言語化対応。
+
+### 機能追加
+
+- Payment API
+  - `POST /payments`時の`locale`フィールドの設定値が増えました。詳しくは[こちら](user-guide/locale.md)。
+  - `POST`, `GET`, `PATCH`の返り値に`locale`フィールドを追加しました。
+
 ## 2016-09-27
 
 ### 機能変更
