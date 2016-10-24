@@ -2,7 +2,7 @@
 
 ## 2016-10-25
 
-Coineyペイジ多言語化対応。
+:globe_with_meridians: Coineyペイジが多言語化対応しました。
 
 ### 機能追加
 
