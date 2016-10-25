@@ -2,7 +2,7 @@
 
 ## 2016-10-25
 
-:globe_with_meridians: Coineyペイジが多言語化対応しました。
+:globe_with_meridians: 支払いページが複数の言語で表示できるようになりました。
 
 ### 機能追加
 
