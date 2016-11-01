@@ -2,7 +2,7 @@
 
 ## 2016-10-25
 
-:globe_with_meridians: 支払いページが複数の言語で表示できるようになりました。
+:globe_with_meridians: 支払いページが複数の言語で表示できるようになりました。詳しくは[こちら](http://news.coiney.com/release-16-11-01/)の記事をご覧ください。
 
 ### 機能追加
 
