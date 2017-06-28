@@ -31,17 +31,21 @@ https://api.coiney.io/api/v1/payments/:PAYMENT_ID
 |`refundedAt`|売上取消・返品した日|`dateTime`|`2016-08-14T21:57:20+09:00`|`ISO 8601`フォーマット。|
 |`validUntil`|支払い期限|`dateTime`|`2016-08-14T21:57:20+09:00`|`ISO 8601`フォーマット。|
 |`status`|支払いステータス|`string`|`open`|支払いステータスに関して、詳しくは[こちら](/user-guides/status.md)|
-|`subject`|支払いのタイトル|`string`|`スタンダードプラン`||
+|`subject`|支払いの件名|`string`|`スタンダードプラン`|支払い画面に表示されます。|
+|`description`|支払いに関する内部的なメモ|`description`|`ウェブサイトからの支払い`|支払い画面には表示されないので内部的な用途でお使いください。|
+|`remarks`|支払いの備考|`string`|`お支払い期日を過ぎますと自動的にキャンセルとなります。あらかじめご了承ください。`|支払い画面に表示されます。|
+|`metadata`|支払いに関するシステム連携のためのデータ|`object`|`{"orderId": "1234"}`|メタデータに関して、詳しくは[こちら](/api-spec/metadata.md)。|
 |`links.paymentUrl`|支払いページURL|`string`|`https://payge.co/co_hogehogehogehogehogehogehogehoge`||
-|`links.redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect	`||
-|`links.cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel	`||
-|`links.webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook	`||
+|`links.redirectUrl`|リダイレクトURL|`string`|`https://coiney.com/redirect`||
+|`links.cancelUrl`|キャンセルURL|`string`|`https://coiney.com/cancel`||
+|`links.webhookUrl`|Webhook URL|`string`|`https://coiney.com/webhook`||
+|`locale`|表示言語|`string`|`ja_JP`|Coineyペイジの表示言語。言語設定に関して詳しくは[こちら](/user-guides/locale.md)。|
 
 ### リクエスト例
 
 ```
 curl -X GET https://api.coiney.io/api/v1/payments/pm_hogehogehogehogehogehogehogehoge \
   -H "Authorization: Bearer sk_live_hogehogehogehogehogehogehogehoge" \
-  -H "X-CoineyPayge-Version: 2016-08-31" \
+  -H "X-CoineyPayge-Version: 2016-10-25" \
   -H "Accept: application/json"
 ```

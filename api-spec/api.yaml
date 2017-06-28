@@ -1,9 +1,9 @@
 swagger: '2.0'
 info:
-  version: 1.0.0
+  version: "1.0.2"
   title: Coiney Payge API
   description: Payment with Coiney Payge
-  x-CoineyPayge-Version: 2016-08-31
+  x-CoineyPayge-Version: 2016-10-25
 basePath: /v1
 consumes:
   - application/json
@@ -161,9 +161,22 @@ definitions:
         enum:
           - jpy
         description: |
-          支払に使う通貨を指定します。
+          支払に使う通貨。
           ISO 4217 に基づいた 3桁の通貨コードを使います。
-          現状は "JPY" のみ有効です。
+      locale:
+        type: string
+        enum:
+          - ja_JP
+          - en_US
+          - zh_CN
+          - zh_TW
+          - ko_KR
+          - th_TH
+        description: |
+          Coineyペイジの表示言語。
+          支払処理前は、支払作成時に設定した表示言語、
+          支払処理が行われた場合は、支払時に設定した表示言語となります。
+          ISO 639 の言語コード、ISO 3166 の国コードに基づいています。
       paidAt:
         type: string
         format: dateTime
@@ -192,7 +205,20 @@ definitions:
       subject:
         type: string
         description: |
-          Coiney Payge のタイトル
+          Coiney Payge の件名
+      remarks:
+        type: string
+        description: |
+          Coiney Payge の備考
+      description:
+        type: string
+        description: |
+          Coineyペイジに関する内部的なメモ
+      metadata:
+        type: object
+        description: |
+          Coineyペイジに関する任意のデータ
+          任意の Key/Value が定義できるが、Value は文字列のみ許可
       links:
         type: object
         properties:
@@ -242,14 +268,17 @@ definitions:
           - zh_CN
           - zh_TW
           - ko_KR
+          - th_TH
         description: |
-          Coiney Payge の表示言語を指定します。
+          Coineyペイジの表示言語を指定します。
+          指定しない場合は、ブラウザの設定が使われます。
+          ISO 639 の言語コード、ISO 3166 の国コードに基づいています。
       redirectUrl:
         type: string
         maxLength: 255
         description: |
           支払処理が完了した後に遷移する画面の URL を指定します。
-          指定しない場合は Coiney Payge の画面が使われます。
+          指定しない場合は Coineyペイジの画面が使われます。
       cancelUrl:
         type: string
         maxLength: 255
@@ -263,10 +292,6 @@ definitions:
           この支払でのみ使用する webhook URL を指定します。
           指定しない場合は、アカウントの設定値が使われます。
           アカウントの設定値もない場合は、webhook の通知をしません。
-      receiptEmail:
-        type: string
-        description: |
-          支払い完了後、レシートメールを送付する場合に設定します。
       method:
         type: string
         enum:
@@ -279,7 +304,20 @@ definitions:
       subject:
         type: string
         description: |
-          Coiney Payge のタイトル
+          Coineyペイジの件名
+      remarks:
+        type: string
+        description: |
+          Coineyペイジの備考
+      description:
+        type: string
+        description: |
+          Coineyペイジに関する内部的なメモ
+      metadata:
+        type: object
+        description: |
+          Coineyペイジに関する任意のデータ
+          任意の Key/Value が定義できるが、Value は文字列のみ許可
       expiredOn:
         type: string
         format: date
@@ -295,6 +333,15 @@ definitions:
         description: |
           支払期限を日付で指定します。
           指定しない場合は、デフォルトで 3ヶ月が設定されます。
+      description:
+        type: string
+        description: |
+          Coineyペイジに関する内部的なメモ
+      metadata:
+        type: object
+        description: |
+          Coineyペイジに関する任意のデータ
+          任意の Key/Value が定義できるが、Value は文字列のみ許可
   Errors:
     type: object
     required:

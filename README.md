@@ -9,6 +9,7 @@
 - [セキュリティ](api-spec/security.md)
 - [エラー](api-spec/errors.md)
 - [ページング](api-spec/pagination.md)
+- [メタデータ](api-spec/metadata.md)
 - [バージョニング](api-spec/versioning.md)
 - [変更履歴](api-spec/CHANGELOG.md)
 - [swaggerドキュメント](api-spec/api.yaml)
@@ -22,6 +23,7 @@
 
 ## ユーザーガイド
 
+- [言語設定について](user-guides/locale.md)
 - [Webhookについて](user-guides/webhook.md)
 - [支払いステータスについて](user-guides/status.md)
 - [テスト決済](user-guides/sandbox.md)
