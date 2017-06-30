@@ -30,7 +30,8 @@
 
 ## サンプルプロジェクト
 
-- [Node.JS](examples/nodejs)
+- [Ruby](examples/ruby)
+- [Node.JS(準備中)](examples/nodejs)
 
 ## バグ報告
 
