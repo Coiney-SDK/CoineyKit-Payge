@@ -62,5 +62,6 @@ curl -X PATCH https://api.coiney.io/api/v1/payments/pm_hogehogehogehogehogehogeh
   "description": "ウェブサイトからの支払い",
   "metadata": {
     "orderId": "1234"
+  }
   }'
 ```
