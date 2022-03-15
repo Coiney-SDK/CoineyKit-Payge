@@ -12,7 +12,7 @@
 - [メタデータ](api-spec/metadata.md)
 - [バージョニング](api-spec/versioning.md)
 - [変更履歴](api-spec/CHANGELOG.md)
-- [swaggerドキュメント](api-spec/api.yaml)
+- [OpenAPIドキュメント](api-spec/api.yaml)
 
 ### Payments API
 
