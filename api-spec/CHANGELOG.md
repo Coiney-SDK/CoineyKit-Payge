@@ -1,5 +1,11 @@
 # Version 1
 
+## 2022-03-16
+
+- Payment API
+  - 準備中となっていたサンプルコードの削除 [#7](https://github.com/Coiney-SDK/CoineyKit-Payge/pull/7)
+  - API ドキュメントをSwaggerからOpenAPIにマイグレーション[#8](https://github.com/Coiney-SDK/CoineyKit-Payge/pull/8)
+
 ## 2016-10-25
 
 :globe_with_meridians: 支払いページが複数の言語で表示できるようになりました。詳しくは[こちら](http://news.coiney.com/release-16-11-01/)の記事をご覧ください。
