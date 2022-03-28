@@ -1,4 +1,4 @@
-# Coineyペイジ API
+# STORES 請求書決済 API
 
 ![](./images/main.jpg)
 
@@ -26,7 +26,6 @@
 - [言語設定について](user-guides/locale.md)
 - [Webhookについて](user-guides/webhook.md)
 - [支払いステータスについて](user-guides/status.md)
-- [テスト決済](user-guides/sandbox.md)
 
 ## サンプルプロジェクト
 
@@ -34,4 +33,4 @@
 
 ## バグ報告
 
-バグ報告の際は、[イシュートラッカー](https://github.com/Coiney-SDK/CoineyKit-Payge/issues) にイシューを作成して頂きますようお願い致します。また、Coineyペイジ APIに関しては、[support@coiney.com](mailto:support@coiney.com)よりお問い合わせください。
+バグ報告の際は、[イシュートラッカー](https://github.com/Coiney-SDK/CoineyKit-Payge/issues) にイシューを作成して頂きますようお願い致します。また、STORES 請求書決済 APIに関しては、[support@coiney.com](mailto:support@coiney.com)よりお問い合わせください。

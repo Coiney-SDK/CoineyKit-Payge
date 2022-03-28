@@ -1,6 +1,6 @@
 # Webhook
 
-支払い状況をリアルタイムに通知するために使用します。[Coineyペイジ - 開発者用設定](http://app.coiney.com/#/merchants/payge/developer)にてWebhook URLを設定することができます。決済ごとにURLを設定したい場合は、`POST /payments`時に指定することもできます。レスポンスのステータスコードが`200`以外を返した場合は、失敗とみなしリトライ処理をします。
+支払い状況をリアルタイムに通知するために使用します。[STORES 請求書決済 - 開発者用設定](http://app.coiney.com/#/merchants/payge/developer)にてWebhook URLを設定することができます。決済ごとにURLを設定したい場合は、`POST /payments`時に指定することもできます。レスポンスのステータスコードが`200`以外を返した場合は、失敗とみなしリトライ処理をします。
 
 ## リクエスト
 
