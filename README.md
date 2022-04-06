@@ -34,3 +34,7 @@
 ## バグ報告
 
 バグ報告の際は、[イシュートラッカー](https://github.com/Coiney-SDK/CoineyKit-Payge/issues) にイシューを作成して頂きますようお願い致します。また、STORES 請求書決済 APIに関しては、[support@coiney.com](mailto:support@coiney.com)よりお問い合わせください。
+
+# 使用許諾契約・ライセンス契約
+
+当ソフトウェアは『[デベロッパー規約](https://coiney.com/legal/sdk/)』に基いてライセンス提供しております。
