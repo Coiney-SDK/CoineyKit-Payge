@@ -1,4 +1,8 @@
 # Version 1
+## 2023-05-23
+
+JCB・American Express・Diners Club・Discover ブランドに対応しました。
+
 ## 2022-08-24
 
 - Payment API

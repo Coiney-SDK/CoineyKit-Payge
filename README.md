@@ -1,6 +1,6 @@
 # STORES 請求書決済 API
 
-![](./images/main.jpg)
+![](./images/main.png)
 
 ## API仕様
 
