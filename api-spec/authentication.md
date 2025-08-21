@@ -6,7 +6,7 @@ APIリクエスト時に`RFC 7235`の`Authorization`ヘッダを用い、`RFC 67
 
 ### 取得方法
 
-1. [こちら](https://app.coiney.com/#/signup)からSTORES 決済 加盟店登録をします。
+1. [こちら](https://dashboard.stores.app/sign_up?service=payments)からSTORES 決済 加盟店登録をします。
 2. [ウェブ管理画面](https://app.coiney.com/#/login)にオーナーとしてログインします。
 3. [STORES 請求書決済 - 開発者用設定](http://app.coiney.com/#/merchants/payge/developer)から取得することができます。
 
